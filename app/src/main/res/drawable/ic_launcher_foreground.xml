@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A warm glow over a strip of three LEDs. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#33F3C98B"
+        android:pathData="M54,30a24,24 0,1 1,0 48a24,24 0,1 1,0 -48z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F3C98B"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M36,54L72,54" />
+    <path
+        android:fillColor="#F3C98B"
+        android:pathData="M38,50a4,4 0,1 1,0 8a4,4 0,1 1,0 -8zM54,50a4,4 0,1 1,0 8a4,4 0,1 1,0 -8zM70,50a4,4 0,1 1,0 8a4,4 0,1 1,0 -8z" />
+</vector>
