@@ -124,13 +124,21 @@ private fun TimerSection(
             title = timer.action.title,
             subtitle = if (timer.isEnabled) describeDays(timer.days) else "Off",
         ) {
-            StripSwitch(timer.isEnabled, onEnabledChange, contentDescription = "${timer.action.title} timer")
+            Row(horizontalArrangement = Arrangement.spacedBy(20.dp), verticalAlignment = Alignment.CenterVertically) {
+                TimeChip(
+                    timer.hour,
+                    timer.minute,
+                    onEditTime,
+                    "Change ${timer.action.title.lowercase()} time",
+                    modifier = Modifier.alpha(alpha),
+                )
+                StripSwitch(timer.isEnabled, onEnabledChange, contentDescription = "${timer.action.title} timer")
+            }
         }
         Row(
             modifier = Modifier.alpha(alpha),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            TimeChip(timer.hour, timer.minute, onEditTime, "Change ${timer.action.title.lowercase()} time")
             DayOfWeek.entries.forEach { day ->
                 DayPill(day, selected = day in timer.days, onClick = { onDayToggle(day) }, modifier = Modifier.weight(1f))
             }
@@ -139,12 +147,12 @@ private fun TimerSection(
 }
 
 @Composable
-private fun TimeChip(hour: Int, minute: Int, onClick: () -> Unit, label: String) {
+private fun TimeChip(hour: Int, minute: Int, onClick: () -> Unit, label: String, modifier: Modifier = Modifier) {
     val shape = RoundedCornerShape(16.dp)
     Row(
-        modifier = Modifier
-            .width(172.dp)
-            .height(64.dp)
+        modifier = modifier
+            .width(164.dp)
+            .height(60.dp)
             .clip(shape)
             .border(1.dp, StripBorder, shape)
             .clickable(role = Role.Button, onClickLabel = label, onClick = onClick)
@@ -158,7 +166,7 @@ private fun TimeChip(hour: Int, minute: Int, onClick: () -> Unit, label: String)
 
 @Composable
 private fun DayPill(day: DayOfWeek, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val shape = RoundedCornerShape(16.dp)
+    val shape = RoundedCornerShape(14.dp)
     val background by animateColorAsState(
         if (selected) StripAccent.copy(alpha = 0.14f) else Color.Transparent,
         tween(StripMotion.CONTROL_MILLIS), label = "day_bg",
@@ -169,7 +177,7 @@ private fun DayPill(day: DayOfWeek, selected: Boolean, onClick: () -> Unit, modi
     )
     Box(
         modifier = modifier
-            .height(64.dp)
+            .height(52.dp)
             .clip(shape)
             .background(background)
             .border(1.dp, border, shape)
