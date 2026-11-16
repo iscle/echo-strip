@@ -42,6 +42,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
@@ -235,7 +236,7 @@ private fun RailItem(destination: Destination, selected: Boolean, onClick: () ->
         horizontalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         Icon(
-            destination.icon,
+            painterResource(destination.icon),
             contentDescription = null,
             tint = if (selected) StripOnSurface else StripOnSurfaceMuted,
             modifier = Modifier.size(26.dp),

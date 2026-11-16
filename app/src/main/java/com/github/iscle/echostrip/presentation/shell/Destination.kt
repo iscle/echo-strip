@@ -1,9 +1,7 @@
 package com.github.iscle.echostrip.presentation.shell
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AccessAlarm
-import androidx.compose.material.icons.outlined.Lightbulb
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.annotation.DrawableRes
+import com.github.iscle.echostrip.R
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
@@ -11,18 +9,18 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed interface Destination : NavKey {
     val title: String
-    val icon: ImageVector
+    @get:DrawableRes val icon: Int
 
     @Serializable
     data object Light : Destination {
         override val title get() = "Light"
-        override val icon get() = Icons.Outlined.Lightbulb
+        override val icon get() = R.drawable.ic_light
     }
 
     @Serializable
     data object Schedule : Destination {
         override val title get() = "Schedule"
-        override val icon get() = Icons.Outlined.AccessAlarm
+        override val icon get() = R.drawable.ic_schedule
     }
 
     companion object {
